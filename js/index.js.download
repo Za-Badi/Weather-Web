@@ -1,0 +1,100 @@
+
+//TODAY VARIABLES
+
+
+let today= {
+  todayName: document.getElementById("today-date-day-name"),
+  todayNumber: document.getElementById("today-date-day-number"),
+ todayMonth: document.getElementById("today-date-month"),
+ todayLocation: document.getElementById("today-location"),
+ todayTemp : document.getElementById("today-temp"),
+ todayConditionImg : document.getElementById("today-condition-img"),
+ todayConditionText : document.getElementById("today-condition-text"),
+ humidity : document.getElementById("humidity"),
+ wind : document.getElementById("wind"),
+ windDirection : document.getElementById("wind-direction"),
+}
+let nextDayObject= {
+ nextDay : document.getElementsByClassName("next-day-name"),
+ nextMaxTemp :document.getElementsByClassName("next-max-temp"),
+ nextMiniTemp : document.getElementsByClassName("next-min-temp"),
+ nextConditionImg : document.getElementsByClassName("next-condition-img"),
+ nextConditionText : document.getElementsByClassName("next-condition-text"),
+}
+// NEXT DATA
+
+// let nextDay = document.getElementsByClassName("next-day-name");
+// let nextMaxTemp = document.getElementsByClassName("next-max-temp");
+// let nextMiniTemp = document.getElementsByClassName("next-min-temp");
+// let nextConditionImg = document.getElementsByClassName("next-condition-img");
+// let nextConditionText = document.getElementsByClassName("next-condition-text");
+
+
+//Input
+
+let searchInput = document.getElementById("search");
+
+searchInput.addEventListener("input", function(){
+    startApp(searchInput.value);
+})
+
+
+
+// Fetch data
+async function getWeatherData(cityName) {
+    let weatherResponse = await fetch(
+      `https://api.weatherapi.com/v1/forecast.json?key=1b6b6b60835d42ab8e9192951230604&q=${cityName}&days=3`
+    );
+    let weatherData = await weatherResponse.json();
+    console.log("jhj");
+    return weatherData;
+  }
+function displayTodayData(data) {
+    let todayDate = new Date();
+    today.todayName.innerHTML = todayDate.toLocaleDateString("en-US", {
+      weekday: "long",
+    });
+    today.todayNumber.innerHTML = todayDate.getDate();
+    today.todayMonth.innerHTML = todayDate.toLocaleDateString("en-US", {
+      month: "long",
+    });
+  
+    today.todayLocation.innerHTML = data.location.name;
+    today.todayTemp.innerHTML = data.current.temp_c;
+    today.todayConditionImg.setAttribute("src", data.current.condition.icon);
+    today.todayConditionText.innerHTML = data.current.condition.text;
+    today.humidity.innerHTML = data.current.humidity + "%";
+    today.wind.innerHTML = data.current.wind_kph + "km/h";
+    today.windDirection.innerHTML = data.current.wind_dir;
+  }
+  // List<nextDayObject> list ;
+
+
+  function displayNextData(data) {
+    let forecastData = data.forecast.forecastday;
+    for (let i = 0; i < 2; i++) {
+      let nextDate = new Date(forecastData[i + 1].date);
+      console.log("zaaa "+ forecastData[i + 1].day.maxtemp_c);
+      nextDayObject.nextDay[i].innerHTML = nextDate.toLocaleDateString("en-US", {
+        weekday: "long",
+      });
+      nextDayObject. nextMaxTemp[i].innerHTML = forecastData[i + 1].day.maxtemp_c;
+      nextDayObject.  nextMiniTemp[i].innerHTML = forecastData[i + 1].day.mintemp_c;
+      nextDayObject.  nextConditionImg[i].setAttribute(
+        "src",
+         forecastData[i + 1].day.condition.icon
+      );
+      nextDayObject. nextConditionText[i].innerHTML = forecastData[i + 1].day.condition.text;
+    }
+   
+  }  
+
+async function startApp(city = "Benghazi") {
+    let weatherData = await getWeatherData(city);
+    if (!weatherData.error) {
+      displayTodayData(weatherData);
+      displayNextData(weatherData);
+    }
+  }  
+startApp();
+

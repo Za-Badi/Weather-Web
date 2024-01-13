@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+
+</head>
+
+<body>
+    <nav id="nav" class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <div class="container-fluid w-100 px-4  m-0 ">
+            <div class=" d-flex gap-2 ">
+                <img src="./assets/img/logo.png" alt="">
+                <a class="navbar-brand text-white " href="#"><strong>Weather</strong></a>
+            </div>
+            <button class="button_bar  navbar-toggler  m-4 border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="fa-bars p-2  fa-solid  border-0"></span>
+            </button>
+            <div class="collapse navbar-collapse container-fluid  px-5" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto  mb-lg-0 gap-4">
+                    <li class="nav-item ">
+                        <a class="nav-link active  " aria-current="page" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  " href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link   " href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  " href="#portfolio">Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testmonial">Clients</a>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a class="nav-link  " href="#team">Team</a>
+                    <li class="nav-item ">
+                        <a class="nav-link  " href="#contact">Contact</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                <a class="nav-link disabled  text-white" aria-disabled="true">Disabled</a>
+              </li> -->
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <header id="home" class=" home-content p-0 m-0 flex-column container-fluid  text-center justify-content-center  align-items-center ">
+        <div class="home-content  container-fluid   m-auto">
+            <div class="search m-auto">
+                <div class=""><input id="search" type="text" class="w-100 mx-auto bg-dark rounded-5 py-3 px-4  mb-5 bg-dark"
+                        placeholder="Find Your Location..." />
+                </div>
+                
+            </div>
+            <div class="pb-5 row gap-0 m-auto ">
+                <div class="item col-md-4 rounded-4 today p-0 m-0 ">
+                    <div id="today-date"
+                        class="d-flex justify-content-between py-2 px-2 text-light bg-black rounded-start">
+                        <p id="today-date-day-name" class="my-auto "></p>
+    
+                        <span>
+                            <span id="today-date-day-number" class="my-auto"></span>
+                            <span id="today-date-month" class="my-auto"></span>
+                        </span>
+                    </div>
+                    <div id="today" class="item-content text-start px-3 py-3 pt-5 text-light">
+                        <p id="today-location" class="city"></p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fs-1 fw-bolder">
+                                <span id="today-temp"></span>
+                                <span><sup>o</sup>C</span>
+                            </span>
+                            <img id="today-condition-img" src="./images/sunny.png" alt="" />
+                        </div>
+                        <p id="today-condition-text" class="text-light-blue par lead">
+                            Sunny
+    
+                        </p>
+                    </div>
+                    <div class="item-footer d-flex text-light p-3">
+                        <div class="d-flex me-3">
+                            <img src="./images/4161219.png" class="footer-icons me-2" alt="" />
+    
+                            <p id="humidity">20</p>
+                        </div>
+                        <div class="d-flex me-3">
+                            <img src="./images/4161273.png" class="footer-icons mx-2" alt="" />
+    
+                            <p id="wind">30 Km/h</p>
+                        </div>
+                        <div class="d-flex">
+                            <img src="./images/2075317.png" class="footer-icons mx-2" alt="" />
+    
+                            <p id="wind-direction">East</p>
+                        </div>
+                    </div>
+    
+    
+    
+                </div>
+                <!-- TOMORROW DATA SECTION -->
+    
+                <div class="item col-md-4 m-0 rounded-4  p-0 m-0">
+                    <div id="tomorrow-date" class="py-2 text-center bg-black text-light">
+                        <p class="next-day-name my-auto"></p>
+                    </div>
+    
+                    <div id="tomorrow" class="item-content text-start text-light p-3 text-center pt-5">
+                        <img class="next-condition-img" src="./images/partly cloudy.png" alt="" />
+    
+                        <h3>
+                            <span class="next-max-temp"></span>
+                            <span><sup>o</sup>C</span>
+                        </h3>
+    
+                        <h5 class="text-white py-3">
+                            <span class="next-min-temp"></span>
+                            <span><sup>o</sup>C</span>
+                        </h5>
+    
+                        <p class="next-condition-text par lead text-light-blue">
+    
+                        </p>
+                    </div>
+                </div>
+    
+    
+                <!-- AFTER TOMORROW DATA SECTION -->
+    
+                <div class="item col-md-4 m-0 last rounded-4  p-0 m-0">
+                    <div class="py-2 text-center px-3 rounded-end bg-black  text-light">
+                        <p class=" next-day-name my-auto"></p>
+                    </div>
+    
+                    <div class="item-content text-start text-light p-3 text-center pt-5">
+                        <img class="next-condition-img" src="./images/partly cloudy.png" alt="" />
+    
+                        <h3>
+                            <span class="next-max-temp"></span>
+                            <span><sup>o</sup>C</span>
+                        </h3>
+    
+                        <h5 class="text-white py-3">
+                            <span class="next-min-temp"></span>
+                            <span><sup>o</sup>C</span>
+                        </h5>
+    
+                        <p class="next-condition-text par lead text-light-blue">
+    
+                        </p>
+                    </div>
+    
+                </div>
+            </div>
+    
+        </div>
+       
+       
+       
+           
+
+
+
+
+
+    </header>
+    <footer class="site-footer ">
+        <div class="container-fluid pt-3 m-auto w-100 m-auto">
+            <div class="row m-auto ">
+                <div class="sub-form  col-md-10">
+                    <form action="#" class="subscribe-form d-flex ">
+                        <input id="subscribe" type="text" placeholder="Enter your email to subscribe...">
+                        <input id="submit" type="submit" value="Subscribe">
+                    </form>
+                </div>
+                <div class="col-md-2 social py-4">
+                    <div class="social-links d-flex justify-content-around">
+                        <!-- <i class="fa-brands fa-facebook-f"></i> -->
+                        <a href="#"><i class=" fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class=" fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-google"></i></a>
+                        <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <p class="pt-2 colophon">Copyright 2014 Company name. Designed by Themezy. All rights reserved</p>
+        </div>
+    </footer>
+
+
+
+
+
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/index.js.download"></script>
+</body>
+
+</html>
+
+
+
+<!-- <html>
+    <head>
+        <link rel="stylesheet" href="./css/all.min.css">
+        <link rel="stylesheet" href="./css/style.css">
+    </head>
+    <body>
+        
+
+
+
+
+        <link rel="stylesheet" href="./js/bootstrap.bundle.min.js">
+    </body>
+</html> -->
